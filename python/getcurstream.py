@@ -1,13 +1,15 @@
 import socket
 import struct
-import time
+import os
 import channels
 
 def listen_to_group(sck, grp_ip):
   req = struct.pack("4sl", socket.inet_aton(grp_ip), socket.INADDR_ANY)
   sck.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, req)
 
-MCAST_PORT = 1234
+#get port from environment config
+MCAST_PORT = int(os.environ.get('UDP_PORT'))
+
 IP_RECVORIGDSTADDR = 20
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)

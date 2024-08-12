@@ -6,3 +6,5 @@ PYTHON_DIR=python
 PYTHON=python3
 #recordings directory
 RECORDINGS=/mnt/Private/Recordings
+#UDP stream port
+export UDP_PORT=1234
